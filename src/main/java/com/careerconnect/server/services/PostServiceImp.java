@@ -6,6 +6,8 @@ import com.careerconnect.server.repo.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostServiceImp implements PostService{
 
@@ -30,4 +32,10 @@ public class PostServiceImp implements PostService{
         return postRepo.save(model);
 
     }
+
+    @Override
+    public List<PostModel> getPosts() {
+        return postRepo.findAll();
+    }
+
 }

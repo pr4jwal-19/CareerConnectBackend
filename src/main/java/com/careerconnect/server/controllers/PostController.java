@@ -1,5 +1,6 @@
 package com.careerconnect.server.controllers;
 
+import com.careerconnect.server.constants.ApiConstants;
 import com.careerconnect.server.dto.PostDTO;
 
 import com.careerconnect.server.models.PostModel;
@@ -7,10 +8,9 @@ import com.careerconnect.server.services.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -25,7 +25,7 @@ public class PostController {
     //
     final PostService postService;
 
-    @PostMapping("/post")
+    @PostMapping(ApiConstants.SAVE_POST)
     public PostModel savePost(@Valid @RequestBody PostDTO postDTORequest){
         // handles post request from frontend - client
         // @Valid will validate the postDTORequest
@@ -39,4 +39,14 @@ public class PostController {
         return this.postService.savePost(postDTORequest);
 
     }
+
+    @GetMapping(ApiConstants.GET_ALL_POSTS)
+    public List<PostModel> getAllPosts(){
+
+        log.info("Get all posts ######");
+
+        return this.postService.getPosts();
+
+    }
+
 }

@@ -3,6 +3,8 @@ package com.careerconnect.server.services;
 import com.careerconnect.server.dto.PostDTO;
 import com.careerconnect.server.models.PostModel;
 
+import java.util.List;
+
 public interface PostService {
     // this class gives you methods which returns you a client obj
     // defines a service which provides with client
@@ -11,4 +13,7 @@ public interface PostService {
     // which takes the payload coming to Controller from client
     // returns an obj of client
     public PostModel savePost(PostDTO postDTO);
+
+    public List<PostModel> getPosts();
+
 }
